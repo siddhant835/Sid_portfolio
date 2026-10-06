@@ -98,9 +98,12 @@ with st.sidebar:
     st.markdown("---")
     st.markdown("### 📍 Details")
     st.markdown("**Location:** Belgaum, Karnataka, India")
-    st.markdown("**Email:** [siddhantpardeshi137@gmail.com](mailto:siddhantpardeshi137@gmail.com)")
+    st.markdown(
+        "**Email:** <a href=\"mailto:siddhantpardeshi137@gmail.com\" style=\"color:#1f77b4; font-weight:600;\">siddhantpardeshi137@gmail.com</a>",
+        unsafe_allow_html=True,
+    )
     st.markdown("**Phone:** [+91 70202 02307](tel:+917020202307)")
-    st.markdown("**GitHub:** [github.com/siddhant835/Sid](https://github.com/siddhant835/Sid)")
+    st.markdown("**GitHub:** [github.com/siddhant835/Sid_portfolio](https://github.com/siddhant835/Sid_portfolio)")
 
     st.markdown("---")
     st.markdown("### ⚡ Core Skills")

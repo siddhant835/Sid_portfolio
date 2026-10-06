@@ -9,7 +9,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
   <script>
@@ -17,16 +17,17 @@
       theme: {
         extend: {
           fontFamily: {
-            mono: ['JetBrains Mono', 'monospace'],
-            sans: ['Inter', 'sans-serif']
+            mono: ['IBM Plex Mono', 'monospace'],
+            sans: ['DM Sans', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif']
           },
           colors: {
             brand: {
-              dark: '#050a14',
-              card: '#0c1527',
-              border: 'rgba(255, 255, 255, 0.1)',
-              cyan: '#22d3ee',
-              blue: '#3b82f6'
+              dark: '#F7F3EE',
+              card: '#FFFDFC',
+              border: '#DED2C5',
+              cyan: '#B89B7A',
+              blue: '#8F735B'
             }
           }
         }
@@ -35,19 +36,40 @@
   </script>
 
   <style>
+    :root {
+      --main-bg: #F7F3EE;
+      --secondary-bg: #EDE3D8;
+      --card-bg: #FFFDFC;
+      --main-text: #2F2925;
+      --secondary-text: #756B63;
+      --accent: #B89B7A;
+      --button: #8F735B;
+      --button-text: #FFFFFF;
+      --border: #DED2C5;
+    }
+
     body {
-      background-color: #050a14;
-      color: #e2e8f0;
+      background-color: var(--main-bg);
+      color: var(--main-text);
+      line-height: 1.65;
+      font-feature-settings: "ss01" on;
+    }
+    h1,
+    main section h2,
+    main section h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      line-height: 1.12;
     }
     .bg-grid-pattern {
       background-image: radial-gradient(rgba(34, 211, 238, 0.12) 1px, transparent 1px);
       background-size: 32px 32px;
     }
     .code-glow {
-      box-shadow: 0 0 35px -5px rgba(6, 182, 212, 0.18);
+      box-shadow: 0 0 35px -5px rgba(184, 155, 122, 0.22);
     }
     dialog::backdrop {
-      background: rgba(3, 7, 18, 0.85);
+      background: rgba(47, 41, 37, 0.68);
       backdrop-filter: blur(8px);
     }
     /* Custom Scrollbar for Modal and Code */
@@ -56,65 +78,58 @@
       height: 6px;
     }
     ::-webkit-scrollbar-track {
-      background: #090e1a;
+      background: #EDE3D8;
     }
     ::-webkit-scrollbar-thumb {
-      background: #1e293b;
+      background: #B89B7A;
       border-radius: 4px;
     }
     ::-webkit-scrollbar-thumb:hover {
-      background: #334155;
+      background: #8F735B;
     }
   </style>
 </head>
-<body class="font-sans antialiased relative min-h-screen selection:bg-cyan-500 selection:text-black">
+<body class="font-sans antialiased relative min-h-screen selection:bg-[#B89B7A] selection:text-[#FFFFFF]">
 
   <!-- Ambient Background Lighting -->
   <div class="fixed inset-0 pointer-events-none z-0">
-    <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[750px] h-[450px] bg-cyan-500/10 blur-[140px] rounded-full"></div>
-    <div class="absolute top-[45%] -right-40 w-[550px] h-[550px] bg-blue-600/10 blur-[150px] rounded-full"></div>
-    <div class="absolute bottom-10 -left-40 w-[550px] h-[550px] bg-cyan-600/10 blur-[150px] rounded-full"></div>
+    <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[750px] h-[450px] bg-[#B89B7A]/10 blur-[140px] rounded-full"></div>
+    <div class="absolute top-[45%] -right-40 w-[550px] h-[550px] bg-[#8F735B]/10 blur-[150px] rounded-full"></div>
+    <div class="absolute bottom-10 -left-40 w-[550px] h-[550px] bg-[#B89B7A]/10 blur-[150px] rounded-full"></div>
     <div class="absolute inset-0 bg-grid-pattern opacity-30"></div>
   </div>
 
   <!-- NAVBAR -->
-  <header class="fixed top-0 w-full z-40 bg-[#050a14]/85 backdrop-blur-md border-b border-white/10 transition-all">
+  <header class="fixed top-0 w-full z-40 bg-[#F7F3EE]/90 backdrop-blur-md border-b border-[#DED2C5] transition-all">
     <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-      <a href="#" class="font-mono font-bold text-lg tracking-wider flex items-center gap-1 group">
-        <span class="text-cyan-400 transition-transform group-hover:-translate-x-0.5">&lt;</span>
-        <span class="text-white">SP</span>
-        <span class="text-cyan-400 transition-transform group-hover:translate-x-0.5">/&gt;</span>
+      <a href="#" aria-label="Siddhant Pardeshi home" class="flex items-center gap-2.5 group">
+        <img src="brand-mark.svg" alt="" aria-hidden="true" class="h-10 w-12 object-contain transition-transform group-hover:scale-105">
+        <span class="font-display text-xs sm:text-sm font-bold uppercase text-[#2F2925]">Siddhant Pardeshi</span>
       </a>
 
       <!-- Desktop Nav -->
       <nav class="hidden md:flex gap-8 text-sm font-mono items-center">
-        <a href="#projects" class="text-slate-300 hover:text-cyan-400 transition-colors">_projects</a>
-        <a href="#skills" class="text-slate-300 hover:text-cyan-400 transition-colors">_skills</a>
-        <a href="#experience" class="text-slate-300 hover:text-cyan-400 transition-colors">_experience</a>
-        <a href="https://github.com/siddhant835/Sid" target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-cyan-400 transition-colors inline-flex items-center gap-1.5">
-          <i class="fa-brands fa-github"></i> GitHub
-        </a>
-        <a href="#contact" class="bg-cyan-500 text-black px-5 py-2 rounded-full font-bold hover:bg-cyan-400 transition-all shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/30">
+        <a href="#projects" class="text-[#756B63] hover:text-[#B89B7A] transition-colors">Projects</a>
+        <a href="#skills" class="text-[#756B63] hover:text-[#B89B7A] transition-colors">Skills</a>
+        <a href="#experience" class="text-[#756B63] hover:text-[#B89B7A] transition-colors">Experience</a>
+        <a href="#contact" class="bg-[#8F735B] text-[#2F2925] px-5 py-2 rounded-full font-bold hover:bg-[#B89B7A] transition-all shadow-lg shadow-[#8F735B]/20 hover:shadow-[#8F735B]/30">
           Contact Me
         </a>
       </nav>
 
       <!-- Mobile Menu Button -->
-      <button id="mobile-menu-btn" aria-label="Toggle Navigation Menu" class="md:hidden text-slate-300 hover:text-white p-2 focus:outline-none">
+      <button id="mobile-menu-btn" aria-label="Toggle Navigation Menu" class="md:hidden text-[#2F2925] hover:text-[#B89B7A] p-2 focus:outline-none">
         <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
       </button>
     </div>
 
     <!-- Mobile Drawer -->
-    <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-6 border-b border-white/10 bg-[#050a14]/95 backdrop-blur-xl">
+    <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-6 border-b border-[#DED2C5] bg-[#F7F3EE]/95 backdrop-blur-xl">
       <div class="flex flex-col gap-4 text-sm font-mono mt-2">
-        <a href="#projects" class="mobile-link text-slate-300 hover:text-cyan-400 py-1">_projects</a>
-        <a href="#skills" class="mobile-link text-slate-300 hover:text-cyan-400 py-1">_skills</a>
-        <a href="#experience" class="mobile-link text-slate-300 hover:text-cyan-400 py-1">_experience</a>
-        <a href="https://github.com/siddhant835/Sid" target="_blank" rel="noopener noreferrer" class="mobile-link text-slate-300 hover:text-cyan-400 py-1 flex items-center gap-2">
-          <i class="fa-brands fa-github"></i> GitHub
-        </a>
-        <a href="#contact" class="mobile-link bg-cyan-500 text-black text-center px-5 py-2.5 rounded-full font-bold hover:bg-cyan-400 mt-2">
+        <a href="#projects" class="mobile-link text-[#756B63] hover:text-[#B89B7A] py-1">Projects</a>
+        <a href="#skills" class="mobile-link text-[#756B63] hover:text-[#B89B7A] py-1">Skills</a>
+        <a href="#experience" class="mobile-link text-[#756B63] hover:text-[#B89B7A] py-1">Experience</a>
+        <a href="#contact" class="mobile-link bg-[#8F735B] text-[#2F2925] text-center px-5 py-2.5 rounded-full font-bold hover:bg-[#B89B7A] mt-2">
           Contact Me
         </a>
       </div>
@@ -123,143 +138,97 @@
 
   <main class="relative z-10">
     <!-- HERO -->
-    <section class="pt-36 pb-20 px-6 max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-      <div>
-        <div class="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-1.5 text-xs font-mono text-cyan-400 mb-6 shadow-inner">
-          <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-          Available for Software Engineer Roles
-        </div>
-        <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight tracking-tight">
+    <section class="pt-36 pb-20 px-6 max-w-6xl mx-auto">
+      <div class="w-full max-w-5xl">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight text-[#2F2925]">
           Hi, I'm <br>
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-500">Siddhant Pardeshi</span>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#B89B7A] via-[#8F735B] to-[#B89B7A]">Siddhant Pardeshi</span>
         </h1>
-        <h2 class="font-mono text-cyan-400 mt-3 text-lg font-medium flex items-center gap-2">
-          <span>&gt;</span> Software Engineer | AI & Automation Specialist
+        <h2 class="font-mono text-[#8F735B] mt-3 text-lg sm:text-xl font-medium flex items-center gap-2">
+          Website Developer | AI & Automation Specialist
         </h2>
-        <p class="text-slate-400 mt-6 leading-relaxed text-base">
-          Results-driven developer with expertise in Python, Web Technologies & Process Automation. I turn manual processes into scalable software — from facial recognition for 250+ users to bulk automation that replaced 3-4 people of manual work.
+        <p class="text-[#756B63] mt-6 leading-relaxed text-base sm:text-lg max-w-4xl">
+          Results-driven developer specializing in <strong>Python, Web Technologies, and Process Automation</strong>. I build scalable solutions that transform manual workflows into efficient, automated systems — including <strong>facial recognition attendance for 250+ users</strong> and <strong>bulk automation solutions that eliminated 3–4 people’s worth of repetitive manual work</strong>.
         </p>
 
         <div class="flex gap-4 mt-8 flex-wrap">
-          <a href="#projects" class="bg-cyan-500 text-black px-7 py-3 rounded-full font-bold hover:bg-cyan-400 transition-all shadow-lg shadow-cyan-500/25 flex items-center gap-2">
+          <a href="#projects" class="bg-[#8F735B] text-black px-7 py-3 rounded-full font-bold hover:bg-[#B89B7A] transition-all shadow-lg shadow-[#8F735B]/25 flex items-center gap-2">
             View Projects <i class="fa-solid fa-arrow-right"></i>
           </a>
-          <a href="https://github.com/siddhant835/Sid" target="_blank" rel="noopener noreferrer" class="border border-white/20 px-7 py-3 rounded-full font-bold hover:bg-white/5 transition-colors flex items-center gap-2">
-            <i class="fa-brands fa-github"></i> GitHub - Sid
-          </a>
-          <button onclick="openProjectModal('p1')" class="border border-cyan-400/40 text-cyan-300 hover:bg-cyan-500/10 px-7 py-3 rounded-full font-bold transition-colors flex items-center gap-2">
-            <i class="fa-solid fa-play text-xs"></i> Live Demos
-          </button>
         </div>
 
-        <div class="grid grid-cols-3 gap-6 mt-12 border-t border-white/10 pt-6">
+        <div class="grid grid-cols-3 gap-6 mt-12 border-t border-[#DED2C5] pt-6">
           <div>
-            <div class="text-3xl font-extrabold text-white">250+</div>
-            <div class="text-xs text-slate-400 font-mono mt-1">Users Deployed</div>
+            <div class="text-3xl font-extrabold text-[#2F2925]">250+</div>
+            <div class="text-xs text-[#756B63] font-mono mt-1">Users Deployed</div>
           </div>
           <div>
-            <div class="text-3xl font-extrabold text-white">4+</div>
-            <div class="text-xs text-slate-400 font-mono mt-1">Major Projects</div>
+            <div class="text-3xl font-extrabold text-[#2F2925]">3</div>
+            <div class="text-xs text-[#756B63] font-mono mt-1">Major Projects</div>
           </div>
           <div>
-            <div class="text-3xl font-extrabold text-white">3-4x</div>
-            <div class="text-xs text-slate-400 font-mono mt-1">Manual Work Reduced</div>
+            <div class="text-3xl font-extrabold text-[#2F2925]">3-4x</div>
+            <div class="text-xs text-[#756B63] font-mono mt-1">Manual Work Reduced</div>
           </div>
         </div>
       </div>
 
-      <!-- TERMINAL CARD -->
-      <div class="bg-[#0f172a]/90 backdrop-blur-md rounded-2xl border border-white/15 overflow-hidden shadow-2xl code-glow">
-        <div class="flex items-center gap-2 px-4 py-3 bg-white/5 border-b border-white/10">
-          <span class="w-3 h-3 bg-red-500 rounded-full inline-block"></span>
-          <span class="w-3 h-3 bg-yellow-500 rounded-full inline-block"></span>
-          <span class="w-3 h-3 bg-green-500 rounded-full inline-block"></span>
-          <span class="ml-4 text-xs font-mono text-slate-400">siddhant@portfolio: ~</span>
-          <a href="https://github.com/siddhant835/Sid" target="_blank" rel="noopener noreferrer" class="ml-auto text-xs font-mono text-cyan-400 hover:underline flex items-center gap-1">
-            <i class="fa-brands fa-github"></i> siddhant835/Sid
-          </a>
-        </div>
-        <div class="p-6 font-mono text-sm leading-6">
-          <div class="text-slate-500 italic"># facial recognition attendance system</div>
-          <div><span class="text-cyan-400">import</span> cv2, face_recognition</div>
-          <div><span class="text-purple-400">def</span> <span class="text-yellow-400">mark_attendance</span>(frame):</div>
-          <div class="pl-4 text-slate-300">faces = detect_faces(frame)</div>
-          <div class="pl-4 text-slate-300"><span class="text-purple-400">for</span> face <span class="text-purple-400">in</span> faces:</div>
-          <div class="pl-8 text-green-400">if match_with_db(face):</div>
-          <div class="pl-12 text-slate-300">db.mark_present(employee_id)</div>
-          <div class="pl-12 text-cyan-400">return <span class="text-green-300">"Attendance Marked ✓"</span></div>
-          
-          <div class="mt-6 bg-green-500/10 border border-green-500/25 rounded-lg p-3 text-green-400 text-xs flex items-center justify-between">
-            <div class="flex items-center gap-2">
-              <i class="fa-solid fa-circle-check text-sm"></i>
-              <span>System deployed for 200-250 employees</span>
-            </div>
-            <button onclick="openProjectModal('p1')" class="bg-green-500/20 hover:bg-green-500/30 text-green-300 px-2.5 py-1 rounded text-xs transition-colors">
-              Simulate
-            </button>
-          </div>
-
-          <div class="mt-4 flex gap-2 flex-wrap">
-            <span class="bg-cyan-500/15 border border-cyan-500/30 text-cyan-300 px-3 py-1 rounded-full text-xs">Python</span>
-            <span class="bg-cyan-500/15 border border-cyan-500/30 text-cyan-300 px-3 py-1 rounded-full text-xs">OpenCV</span>
-            <span class="bg-cyan-500/15 border border-cyan-500/30 text-cyan-300 px-3 py-1 rounded-full text-xs">MySQL</span>
-            <span class="bg-cyan-500/15 border border-cyan-500/30 text-cyan-300 px-3 py-1 rounded-full text-xs">REST API</span>
-          </div>
-        </div>
-      </div>
     </section>
 
     <!-- TECH STACK -->
     <section id="skills" class="px-6 max-w-6xl mx-auto py-16 scroll-mt-20">
-      <h3 class="font-mono text-cyan-400 text-sm mb-2 font-medium tracking-wide">// TECH STACK</h3>
-      <h2 class="text-3xl font-bold mb-8 tracking-tight">Built for Scale & Automation</h2>
-      <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <h2 class="text-3xl font-bold mb-8 tracking-tight">Technical Skills</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         
-        <div class="bg-white/[0.03] hover:bg-white/[0.06] border border-white/10 rounded-xl p-5 transition-colors">
-          <div class="text-cyan-400 mb-3 font-semibold flex items-center gap-2">
-            <i class="fa-solid fa-code"></i> Languages
+        <div class="bg-[#FFFDFC]/90 hover:bg-[#EDE3D8] border border-[#DED2C5] rounded-xl p-5 transition-colors">
+          <div class="text-[#B89B7A] mb-3 font-semibold flex items-center gap-2">
+            <i class="fa-solid fa-code"></i> Programming
           </div>
           <div class="flex flex-wrap gap-2 text-xs font-mono">
-            <span class="bg-white/10 px-3 py-1 rounded-full">Python</span>
-            <span class="bg-white/10 px-3 py-1 rounded-full">JavaScript</span>
-            <span class="bg-white/10 px-3 py-1 rounded-full">PHP</span>
-            <span class="bg-white/10 px-3 py-1 rounded-full">C</span>
-            <span class="bg-white/10 px-3 py-1 rounded-full">SQL</span>
+            <span class="bg-[#EDE3D8] px-3 py-1 rounded-full">Python</span>
+            <span class="bg-[#EDE3D8] px-3 py-1 rounded-full">JavaScript</span>
+            <span class="bg-[#EDE3D8] px-3 py-1 rounded-full">PHP</span>
+            <span class="bg-[#EDE3D8] px-3 py-1 rounded-full">C</span>
+            <span class="bg-[#EDE3D8] px-3 py-1 rounded-full">SQL</span>
           </div>
         </div>
 
-        <div class="bg-white/[0.03] hover:bg-white/[0.06] border border-white/10 rounded-xl p-5 transition-colors">
+        <div class="bg-[#FFFDFC]/90 hover:bg-[#EDE3D8] border border-[#DED2C5] rounded-xl p-5 transition-colors">
           <div class="text-purple-400 mb-3 font-semibold flex items-center gap-2">
-            <i class="fa-solid fa-layer-group"></i> Frontend
+            <i class="fa-solid fa-layer-group"></i> Web Development
           </div>
           <div class="flex flex-wrap gap-2 text-xs font-mono">
-            <span class="bg-white/10 px-3 py-1 rounded-full">HTML5</span>
-            <span class="bg-white/10 px-3 py-1 rounded-full">CSS3</span>
-            <span class="bg-white/10 px-3 py-1 rounded-full">Tailwind CSS</span>
-            <span class="bg-white/10 px-3 py-1 rounded-full">Responsive Design</span>
+            <span class="bg-[#EDE3D8] px-3 py-1 rounded-full">HTML5</span>
+            <span class="bg-[#EDE3D8] px-3 py-1 rounded-full">CSS3</span>
+            <span class="bg-[#EDE3D8] px-3 py-1 rounded-full">JavaScript</span>
+            <span class="bg-[#EDE3D8] px-3 py-1 rounded-full">Responsive Web Design</span>
           </div>
         </div>
 
-        <div class="bg-white/[0.03] hover:bg-white/[0.06] border border-white/10 rounded-xl p-5 transition-colors">
-          <div class="text-green-400 mb-3 font-semibold flex items-center gap-2">
-            <i class="fa-solid fa-robot"></i> AI & CV
+        <div class="bg-[#FFFDFC]/90 hover:bg-[#EDE3D8] border border-[#DED2C5] rounded-xl p-5 transition-colors">
+          <div class="text-[#B89B7A] mb-3 font-semibold flex items-center gap-2">
+            <i class="fa-solid fa-database"></i> Database
           </div>
           <div class="flex flex-wrap gap-2 text-xs font-mono">
-            <span class="bg-white/10 px-3 py-1 rounded-full">OpenCV</span>
-            <span class="bg-white/10 px-3 py-1 rounded-full">Face Recognition</span>
-            <span class="bg-white/10 px-3 py-1 rounded-full">AI/LLM Tools</span>
+            <span class="bg-[#EDE3D8] px-3 py-1 rounded-full">SQL</span>
+            <span class="bg-[#EDE3D8] px-3 py-1 rounded-full">MySQL</span>
           </div>
         </div>
 
-        <div class="bg-white/[0.03] hover:bg-white/[0.06] border border-white/10 rounded-xl p-5 transition-colors">
-          <div class="text-yellow-400 mb-3 font-semibold flex items-center gap-2">
-            <i class="fa-solid fa-database"></i> Backend & Tools
+        <div class="bg-[#FFFDFC]/90 hover:bg-[#EDE3D8] border border-[#DED2C5] rounded-xl p-5 transition-colors">
+          <div class="text-[#8F735B] mb-3 font-semibold flex items-center gap-2">
+            <i class="fa-solid fa-screwdriver-wrench"></i> Tools & Platforms
           </div>
           <div class="flex flex-wrap gap-2 text-xs font-mono">
-            <span class="bg-white/10 px-3 py-1 rounded-full">MySQL</span>
-            <span class="bg-white/10 px-3 py-1 rounded-full">REST API</span>
-            <span class="bg-white/10 px-3 py-1 rounded-full">Git/GitHub</span>
-            <span class="bg-white/10 px-3 py-1 rounded-full">Apps Script</span>
+            <span class="bg-[#EDE3D8] px-3 py-1 rounded-full">GitHub</span>
+            <span class="bg-[#EDE3D8] px-3 py-1 rounded-full">Visual Studio Code</span>
+            <span class="bg-[#EDE3D8] px-3 py-1 rounded-full">Google Sheets</span>
+            <span class="bg-[#EDE3D8] px-3 py-1 rounded-full">Gmail</span>
+            <span class="bg-[#EDE3D8] px-3 py-1 rounded-full">Wix</span>
+            <span class="bg-[#EDE3D8] px-3 py-1 rounded-full">cPanel</span>
+            <span class="bg-[#EDE3D8] px-3 py-1 rounded-full">Microsoft Office</span>
+            <span class="bg-[#EDE3D8] px-3 py-1 rounded-full">Tally ERP9</span>
+            <span class="bg-[#EDE3D8] px-3 py-1 rounded-full">Google Apps Script</span>
           </div>
         </div>
 
@@ -270,10 +239,8 @@
     <section id="projects" class="px-6 max-w-6xl mx-auto py-16 scroll-mt-20">
       <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
         <div>
-          <h3 class="font-mono text-cyan-400 text-sm mb-2 font-medium tracking-wide">// SELECTED WORK</h3>
           <h2 class="text-3xl font-bold tracking-tight">Featured Projects</h2>
         </div>
-        <p class="text-sm font-mono text-slate-400">Click <span class="text-cyan-400">Live Demo</span> to test interactive simulations</p>
       </div>
 
       <div class="grid md:grid-cols-2 gap-6">
@@ -282,103 +249,51 @@
         <div class="bg-gradient-to-br from-cyan-500/10 via-blue-500/5 to-transparent border border-cyan-500/25 hover:border-cyan-500/40 rounded-2xl p-6 relative overflow-hidden transition-all shadow-lg flex flex-col justify-between group">
           <div>
             <div class="flex justify-between items-start mb-2">
-              <span class="text-xs font-mono text-cyan-400">// Project 01</span>
-              <span class="bg-cyan-500 text-black text-xs font-extrabold px-3 py-1 rounded-full tracking-wide">FEATURED</span>
+              <span class="bg-[#8F735B] text-black text-xs font-extrabold px-3 py-1 rounded-full tracking-wide">FEATURED</span>
             </div>
-            <h3 class="text-xl font-bold text-white mt-2 group-hover:text-cyan-300 transition-colors">Facial Recognition Attendance System</h3>
-            <p class="text-xs text-slate-400 font-mono mt-1">Web Application • Computer Vision • DMS Integration</p>
-            <p class="text-sm text-slate-300 mt-4 leading-relaxed">
+            <h3 class="text-xl font-bold text-[#2F2925] mt-2 group-hover:text-[#8F735B] transition-colors">Facial Recognition Attendance System</h3>
+            <p class="text-xs text-[#756B63] font-mono mt-1">Web Application • Computer Vision • DMS Integration</p>
+            <p class="text-sm text-[#2F2925] mt-4 leading-relaxed">
               Scalable web-based attendance platform with webcam authentication for 250+ employees. Prevents duplicate punches and automates attendance rules with instant DMS syncing.
             </p>
             <div class="flex flex-wrap gap-2 mt-4 text-xs font-mono">
-              <span class="bg-white/10 px-3 py-1 rounded-full">Python</span>
-              <span class="bg-white/10 px-3 py-1 rounded-full">OpenCV</span>
-              <span class="bg-white/10 px-3 py-1 rounded-full">MySQL</span>
-              <span class="bg-white/10 px-3 py-1 rounded-full">PHP</span>
+              <span class="bg-[#EDE3D8] px-3 py-1 rounded-full">Python</span>
+              <span class="bg-[#EDE3D8] px-3 py-1 rounded-full">OpenCV</span>
+              <span class="bg-[#EDE3D8] px-3 py-1 rounded-full">MySQL</span>
+              <span class="bg-[#EDE3D8] px-3 py-1 rounded-full">PHP</span>
             </div>
-          </div>
-          <div class="flex gap-3 mt-6">
-            <button onclick="openProjectModal('p1')" class="bg-cyan-500 hover:bg-cyan-400 text-black px-5 py-2 rounded-full text-sm font-bold transition-all shadow-md inline-flex items-center gap-2">
-              <i class="fa-solid fa-play text-xs"></i> Live Demo
-            </button>
-            <a href="https://github.com/siddhant835/Sid" target="_blank" rel="noopener noreferrer" class="bg-white/10 hover:bg-white/20 border border-white/15 text-white px-5 py-2 rounded-full text-sm font-bold transition-colors inline-flex items-center gap-2">
-              <i class="fa-brands fa-github"></i> Code
-            </a>
-          </div>
-        </div>
-
-        <!-- P2: CSR Research & Outreach -->
-        <div class="bg-white/[0.03] hover:bg-white/[0.06] border border-white/10 hover:border-white/20 rounded-2xl p-6 transition-all flex flex-col justify-between group">
-          <div>
-            <span class="text-xs font-mono text-cyan-400">// Project 02</span>
-            <h3 class="text-xl font-bold text-white mt-2 group-hover:text-cyan-300 transition-colors">CSR Research & Outreach Automation</h3>
-            <p class="text-sm text-slate-400 font-mono mt-1">Bulk Data Pipeline • Lead Generation</p>
-            <p class="text-sm text-slate-300 mt-4 leading-relaxed">
-              Automation pipeline to research, validate and organize hundreds of CSR corporate prospects with smart deduplication and automated status pipelines.
-            </p>
-            <div class="flex flex-wrap gap-2 mt-4 text-xs font-mono">
-              <span class="bg-white/10 px-3 py-1 rounded-full">Apps Script</span>
-              <span class="bg-white/10 px-3 py-1 rounded-full">Sheets API</span>
-              <span class="bg-white/10 px-3 py-1 rounded-full">Search API</span>
-            </div>
-          </div>
-          <div class="flex gap-3 mt-6">
-            <button onclick="openProjectModal('p2')" class="bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-300 border border-cyan-500/30 px-5 py-2 rounded-full text-sm font-bold transition-colors inline-flex items-center gap-2">
-              <i class="fa-solid fa-play text-xs"></i> Live Demo
-            </button>
-            <a href="https://github.com/siddhant835/Sid" target="_blank" rel="noopener noreferrer" class="bg-white/10 hover:bg-white/20 border border-white/15 px-5 py-2 rounded-full text-sm font-bold transition-colors inline-flex items-center gap-2">
-              <i class="fa-brands fa-github"></i> View Code
-            </a>
           </div>
         </div>
 
         <!-- P3: Automated CSR Email -->
-        <div class="bg-white/[0.03] hover:bg-white/[0.06] border border-white/10 hover:border-white/20 rounded-2xl p-6 transition-all flex flex-col justify-between group">
+        <div class="bg-[#FFFDFC]/90 hover:bg-[#EDE3D8] border border-[#DED2C5] hover:border-[#DED2C5]/80 rounded-2xl p-6 transition-all flex flex-col justify-between group">
           <div>
-            <span class="text-xs font-mono text-cyan-400">// Project 03</span>
-            <h3 class="text-xl font-bold text-white mt-2 group-hover:text-cyan-300 transition-colors">Automated CSR Email System</h3>
-            <p class="text-sm text-slate-400 font-mono mt-1">Gmail API • Campaign Management</p>
-            <p class="text-sm text-slate-300 mt-4 leading-relaxed">
+            <h3 class="text-xl font-bold text-[#2F2925] mt-2 group-hover:text-[#8F735B] transition-colors">Automated CSR Email System</h3>
+            <p class="text-sm text-[#756B63] font-mono mt-1">Gmail API • Campaign Management</p>
+            <p class="text-sm text-[#2F2925] mt-4 leading-relaxed">
               Zero-cost bulk email system with CC handling, thread tracking, automated batch sending, and follow-ups. Saved 3-4 staff members of manual effort.
             </p>
             <div class="flex flex-wrap gap-2 mt-4 text-xs font-mono">
-              <span class="bg-white/10 px-3 py-1 rounded-full">Gmail API</span>
-              <span class="bg-white/10 px-3 py-1 rounded-full">Mail Merge</span>
-              <span class="bg-white/10 px-3 py-1 rounded-full">Apps Script</span>
+              <span class="bg-[#EDE3D8] px-3 py-1 rounded-full">Gmail API</span>
+              <span class="bg-[#EDE3D8] px-3 py-1 rounded-full">Mail Merge</span>
+              <span class="bg-[#EDE3D8] px-3 py-1 rounded-full">Apps Script</span>
             </div>
-          </div>
-          <div class="flex gap-3 mt-6">
-            <button onclick="openProjectModal('p3')" class="bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-300 border border-cyan-500/30 px-5 py-2 rounded-full text-sm font-bold transition-colors inline-flex items-center gap-2">
-              <i class="fa-solid fa-play text-xs"></i> Live Demo
-            </button>
-            <a href="https://github.com/siddhant835/Sid" target="_blank" rel="noopener noreferrer" class="bg-white/10 hover:bg-white/20 border border-white/15 px-5 py-2 rounded-full text-sm font-bold transition-colors inline-flex items-center gap-2">
-              <i class="fa-brands fa-github"></i> View Code
-            </a>
           </div>
         </div>
 
         <!-- P4: Mahesh Foundation Site -->
-        <div class="bg-white/[0.03] hover:bg-white/[0.06] border border-white/10 hover:border-white/20 rounded-2xl p-6 transition-all flex flex-col justify-between group">
+        <div class="bg-[#FFFDFC]/90 hover:bg-[#EDE3D8] border border-[#DED2C5] hover:border-[#DED2C5]/80 rounded-2xl p-6 transition-all flex flex-col justify-between group">
           <div>
-            <span class="text-xs font-mono text-cyan-400">// Project 04</span>
-            <h3 class="text-xl font-bold text-white mt-2 group-hover:text-cyan-300 transition-colors">Responsive NGO Website — Mahesh Foundation</h3>
-            <p class="text-sm text-slate-400 font-mono mt-1">Frontend • UI/UX • Wix Integration</p>
-            <p class="text-sm text-slate-300 mt-4 leading-relaxed">
+            <h3 class="text-xl font-bold text-[#2F2925] mt-2 group-hover:text-[#8F735B] transition-colors">Responsive NGO Website — Mahesh Foundation</h3>
+            <p class="text-sm text-[#756B63] font-mono mt-1">Frontend • UI/UX • Wix Integration</p>
+            <p class="text-sm text-[#2F2925] mt-4 leading-relaxed">
               Custom animated & responsive components for donation, CSR initiatives, and educational programs. Improved donor conversion and partner inquiries.
             </p>
             <div class="flex flex-wrap gap-2 mt-4 text-xs font-mono">
-              <span class="bg-white/10 px-3 py-1 rounded-full">HTML5</span>
-              <span class="bg-white/10 px-3 py-1 rounded-full">CSS3</span>
-              <span class="bg-white/10 px-3 py-1 rounded-full">JavaScript</span>
+              <span class="bg-[#EDE3D8] px-3 py-1 rounded-full">HTML</span>
+              <span class="bg-[#EDE3D8] px-3 py-1 rounded-full">CSS</span>
+              <span class="bg-[#EDE3D8] px-3 py-1 rounded-full">JavaScript</span>
             </div>
-          </div>
-          <div class="flex gap-3 mt-6">
-            <button onclick="openProjectModal('p4')" class="bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-300 border border-cyan-500/30 px-5 py-2 rounded-full text-sm font-bold transition-colors inline-flex items-center gap-2">
-              <i class="fa-solid fa-window-maximize text-xs"></i> Showcase
-            </button>
-            <a href="https://maheshfoundation.org" target="_blank" rel="noopener noreferrer" class="border border-white/20 hover:bg-white/10 px-5 py-2 rounded-full text-sm font-bold transition-colors inline-flex items-center gap-2">
-              Visit Site <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-            </a>
           </div>
         </div>
 
@@ -387,28 +302,28 @@
 
     <!-- EXPERIENCE -->
     <section id="experience" class="px-6 max-w-6xl mx-auto py-16 scroll-mt-20">
-      <h3 class="font-mono text-cyan-400 text-sm mb-6 font-medium tracking-wide">// EXPERIENCE</h3>
-      <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row gap-8">
+
+      <div class="bg-[#FFFDFC]/90 border border-[#DED2C5] rounded-2xl p-6 md:p-8 flex flex-col md:flex-row gap-8">
         <div class="md:w-1/3">
-          <h3 class="font-bold text-lg text-white">Mahesh Foundation</h3>
-          <p class="text-cyan-400 font-mono text-sm mt-1">CSR Executive & AI Innovations</p>
-          <p class="text-slate-400 text-xs font-mono mt-2">July 2024 – Present • Belgaum, Karnataka</p>
+          <h3 class="font-bold text-lg text-[#2F2925]">Mahesh Foundation</h3>
+          <p class="text-[#B89B7A] font-mono text-sm mt-1">CSR Executive & AI Innovations</p>
+          <p class="text-[#756B63] text-xs font-mono mt-2">July 2026 – Present • Belgaum, Karnataka</p>
           <div class="mt-4">
             <span class="inline-flex items-center text-xs text-green-400 bg-green-500/10 border border-green-500/20 px-2.5 py-1 rounded-md">
               <span class="w-1.5 h-1.5 bg-green-400 rounded-full mr-1.5"></span> Current Role
             </span>
           </div>
         </div>
-        <div class="md:w-2/3 text-sm text-slate-300 leading-relaxed border-t md:border-t-0 md:border-l border-white/10 pt-6 md:pt-0 md:pl-8">
-          <ul class="list-disc ml-5 space-y-3 marker:text-cyan-400">
+        <div class="md:w-2/3 text-sm text-[#2F2925] leading-relaxed border-t md:border-t-0 md:border-l border-[#DED2C5] pt-6 md:pt-0 md:pl-8">
+          <ul class="list-disc ml-5 space-y-3 marker:text-[#B89B7A]">
             <li>
-              <strong class="text-white">Facial Recognition Attendance System:</strong> Developed & deployed a high-reliability attendance system for 200-250 employees integrated seamlessly with internal Document Management Systems (DMS).
+              <strong class="text-[#2F2925]">Facial Recognition Attendance System:</strong> Developed & deployed a high-reliability attendance system for 200-250 employees integrated seamlessly with internal Document Management Systems (DMS).
             </li>
             <li>
-              <strong class="text-white">CSR Outreach Automation:</strong> Automated CSR email campaigns & follow-ups using Gmail API & Google Apps Script — reducing the manual workload of 3–4 full-time staff.
+              <strong class="text-[#2F2925]">CSR Outreach Automation:</strong> Automated CSR email campaigns & follow-ups using Gmail API & Google Apps Script — reducing the manual workload of 3–4 full-time staff.
             </li>
             <li>
-              <strong class="text-white">In-house Technical Solutions:</strong> Architected internal automation scripts and workflows to streamline everyday NGO operations and data synchronization.
+              <strong class="text-[#2F2925]">In-house Technical Solutions:</strong> Architected internal automation scripts and workflows to streamline everyday NGO operations and data synchronization.
             </li>
           </ul>
         </div>
@@ -419,108 +334,35 @@
     <section id="contact" class="px-6 max-w-6xl mx-auto py-16 scroll-mt-20">
       
       <!-- Top Call to Action Banner -->
-      <div class="bg-gradient-to-br from-cyan-400 via-sky-400 to-blue-600 rounded-3xl p-8 md:p-12 text-slate-950 shadow-2xl shadow-cyan-500/20 mb-12">
+      <div class="bg-gradient-to-br from-[#B89B7A] via-[#8F735B] to-[#8F735B] rounded-3xl p-8 md:p-12 text-[#2F2925] shadow-2xl shadow-[#8F735B]/20 mb-12">
         <div class="max-w-3xl mx-auto text-center">
           <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight">Let's Build Something Scalable</h2>
-          <p class="mt-4 font-medium text-slate-900/85 text-base md:text-lg">
+          <p class="mt-4 font-medium text-[#2F2925]/85 text-base md:text-lg">
             Looking for a Software Engineer / Python Developer who can ship robust automation that saves hundreds of manual hours?
           </p>
 
           <div class="flex justify-center gap-4 mt-8 flex-wrap">
-            <a href="mailto:siddhantpardeshi137@gmail.com" class="bg-black text-white hover:bg-slate-900 px-7 py-3 rounded-full font-bold transition-all shadow-lg flex items-center gap-2">
+            <a href="mailto:siddhantpardeshi137@gmail.com" class="bg-[#EDE3D8] hover:bg-white/30 backdrop-blur border border-[#DED2C5] text-[#2F2925] px-7 py-3 rounded-full font-bold transition-all flex items-center gap-2">
               <i class="fa-solid fa-envelope"></i> siddhantpardeshi137@gmail.com
             </a>
-            <button onclick="copyToClipboard('+917020202307')" class="bg-white/20 hover:bg-white/30 backdrop-blur border border-black/10 text-slate-950 px-7 py-3 rounded-full font-bold transition-all flex items-center gap-2">
+            <button onclick="copyToClipboard('+917020202307')" class="bg-[#EDE3D8] hover:bg-white/30 backdrop-blur border border-[#DED2C5] text-[#2F2925] px-7 py-3 rounded-full font-bold transition-all flex items-center gap-2">
               <i class="fa-solid fa-phone"></i> +91 70202 02307
             </button>
-            <a href="https://github.com/siddhant835/Sid" target="_blank" rel="noopener noreferrer" class="bg-white text-slate-950 hover:bg-slate-100 px-7 py-3 rounded-full font-bold transition-all shadow-lg flex items-center gap-2">
+            <a href="https://in.linkedin.com/in/siddhant-pardeshi-7b6548306" target="_blank" rel="noopener noreferrer" class="bg-white text-[#2F2925] hover:bg-[#EDE3D8] px-7 py-3 rounded-full font-bold transition-all shadow-lg flex items-center gap-2">
+              <i class="fa-brands fa-linkedin"></i> LinkedIn
+            </a>
+            <a href="https://github.com/siddhant835/Sid" target="_blank" rel="noopener noreferrer" class="bg-white text-[#2F2925] hover:bg-[#EDE3D8] px-7 py-3 rounded-full font-bold transition-all shadow-lg flex items-center gap-2">
               <i class="fa-brands fa-github"></i> github.com/siddhant835/Sid
             </a>
           </div>
         </div>
       </div>
 
-      <!-- Functional Contact Form Card -->
-      <div class="grid md:grid-cols-5 gap-8 bg-[#0c1527] border border-white/10 rounded-3xl p-8 md:p-10 shadow-2xl">
-        <div class="md:col-span-2 flex flex-col justify-between">
-          <div>
-            <span class="text-xs font-mono text-cyan-400">// GET IN TOUCH</span>
-            <h3 class="text-2xl font-bold text-white mt-1">Send a Direct Message</h3>
-            <p class="text-slate-400 text-sm mt-3 leading-relaxed">
-              Have an open role, freelance project, or need consultation on Python and AI workflow automation? Send a message and I'll respond within 24 hours.
-            </p>
-          </div>
-
-          <div class="space-y-4 my-6 text-sm">
-            <div class="flex items-center gap-3 text-slate-300">
-              <div class="w-9 h-9 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
-                <i class="fa-solid fa-location-dot"></i>
-              </div>
-              <span>Belgaum, Karnataka, India</span>
-            </div>
-            <div class="flex items-center gap-3 text-slate-300">
-              <div class="w-9 h-9 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
-                <i class="fa-solid fa-briefcase"></i>
-              </div>
-              <span>Full-time & Contract Roles</span>
-            </div>
-            <div class="flex items-center gap-3 text-slate-300">
-              <div class="w-9 h-9 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
-                <i class="fa-solid fa-clock"></i>
-              </div>
-              <span>Immediate Joiner</span>
-            </div>
-          </div>
-
-          <div class="text-xs text-slate-500 font-mono">
-            Encrypted & dispatched directly to email inbox.
-          </div>
-        </div>
-
-        <!-- Form Element -->
-        <div class="md:col-span-3">
-          <form id="contact-form" action="https://formspree.io/f/mqkenvba" method="POST" class="space-y-4">
-            <div class="grid sm:grid-cols-2 gap-4">
-              <div>
-                <label for="name" class="block text-xs font-mono text-slate-300 mb-1.5">Your Name *</label>
-                <input type="text" id="name" name="name" required placeholder="John Doe" 
-                  class="w-full bg-slate-900/80 border border-white/15 focus:border-cyan-400 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-cyan-400 transition-all">
-              </div>
-              <div>
-                <label for="email" class="block text-xs font-mono text-slate-300 mb-1.5">Your Email *</label>
-                <input type="email" id="email" name="email" required placeholder="john@example.com" 
-                  class="w-full bg-slate-900/80 border border-white/15 focus:border-cyan-400 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-cyan-400 transition-all">
-              </div>
-            </div>
-
-            <div>
-              <label for="subject" class="block text-xs font-mono text-slate-300 mb-1.5">Subject</label>
-              <input type="text" id="subject" name="subject" placeholder="Opportunity / Project Discussion" 
-                class="w-full bg-slate-900/80 border border-white/15 focus:border-cyan-400 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-cyan-400 transition-all">
-            </div>
-
-            <div>
-              <label for="message" class="block text-xs font-mono text-slate-300 mb-1.5">Message *</label>
-              <textarea id="message" name="message" rows="4" required placeholder="Hi Siddhant, I came across your portfolio and would like to discuss..." 
-                class="w-full bg-slate-900/80 border border-white/15 focus:border-cyan-400 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-cyan-400 transition-all resize-none"></textarea>
-            </div>
-
-            <div class="flex items-center justify-between pt-2">
-              <div id="form-status" class="text-xs font-mono text-slate-400"></div>
-              <button type="submit" id="submit-btn" class="bg-cyan-500 hover:bg-cyan-400 text-black font-bold px-7 py-3 rounded-full text-sm transition-all shadow-lg shadow-cyan-500/20 flex items-center gap-2">
-                <span>Send Message</span>
-                <i class="fa-solid fa-paper-plane text-xs"></i>
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-
       <!-- Footer -->
-      <footer class="text-center text-slate-500 text-xs font-mono mt-14 space-y-2">
+      <footer class="text-center text-[#756B63] text-xs font-mono mt-14 space-y-2">
         <div>© 2025 Siddhant Pardeshi • Belgaum, Karnataka, India</div>
         <div>
-          Deployed with GitHub Pages • Source at <a href="https://github.com/siddhant835/Sid" target="_blank" rel="noopener noreferrer" class="underline hover:text-cyan-400">github.com/siddhant835/Sid</a>
+          Deployed with GitHub Pages • Source at <a href="https://github.com/siddhant835/Sid" target="_blank" rel="noopener noreferrer" class="underline hover:text-[#B89B7A]">github.com/siddhant835/Sid</a>
         </div>
       </footer>
     </section>
@@ -529,34 +371,34 @@
   <!-- ========================================================== -->
   <!-- INTERACTIVE PROJECT DEMO MODAL (HTML5 <dialog>) -->
   <!-- ========================================================== -->
-  <dialog id="project-modal" class="p-0 rounded-2xl bg-[#0b1325] text-white border border-white/20 w-11/12 max-w-4xl shadow-2xl focus:outline-none">
+  <dialog id="project-modal" class="p-0 rounded-2xl bg-[#FFFDFC] text-[#2F2925] border border-[#DED2C5]/80 w-11/12 max-w-4xl shadow-2xl focus:outline-none">
     <div class="flex flex-col max-h-[90vh]">
       
       <!-- Modal Header -->
-      <div class="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-white/[0.03]">
+      <div class="flex items-center justify-between px-6 py-4 border-b border-[#DED2C5] bg-[#FFFDFC]/90">
         <div class="flex items-center gap-3">
-          <div class="font-mono text-xs text-cyan-400 font-bold px-2 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/20">
+          <div class="font-mono text-xs text-[#B89B7A] font-bold px-2 py-0.5 rounded bg-[#B89B7A]/10 border border-[#B89B7A]/20">
             SIMULATOR & DEMO
           </div>
-          <h3 id="modal-title" class="font-bold text-lg text-white">Project Interactive Preview</h3>
+          <h3 id="modal-title" class="font-bold text-lg text-[#2F2925]">Project Interactive Preview</h3>
         </div>
-        <button onclick="closeProjectModal()" class="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-white/10 transition-colors">
+        <button onclick="closeProjectModal()" class="text-[#756B63] hover:text-[#2F2925] p-1 rounded-lg hover:bg-[#EDE3D8] transition-colors">
           <i class="fa-solid fa-xmark text-lg"></i>
         </button>
       </div>
 
       <!-- Tab Selectors inside Modal -->
-      <div class="flex border-b border-white/10 px-6 bg-slate-950/40 text-xs font-mono gap-4 overflow-x-auto">
-        <button id="tab-btn-p1" onclick="switchModalTab('p1')" class="py-3 px-1 border-b-2 border-cyan-400 text-cyan-400 font-bold transition-all whitespace-nowrap">
+      <div class="flex border-b border-[#DED2C5] px-6 bg-[#FFFDFC]/90 text-xs font-mono gap-4 overflow-x-auto">
+        <button id="tab-btn-p1" onclick="switchModalTab('p1')" class="py-3 px-1 border-b-2 border-[#B89B7A] text-[#B89B7A] font-bold transition-all whitespace-nowrap">
           1. Facial Recognition
         </button>
-        <button id="tab-btn-p2" onclick="switchModalTab('p2')" class="py-3 px-1 border-b-2 border-transparent text-slate-400 hover:text-white transition-all whitespace-nowrap">
+        <button id="tab-btn-p2" onclick="switchModalTab('p2')" class="py-3 px-1 border-b-2 border-transparent text-[#756B63] hover:text-[#2F2925] transition-all whitespace-nowrap">
           2. CSR Lead Pipeline
         </button>
-        <button id="tab-btn-p3" onclick="switchModalTab('p3')" class="py-3 px-1 border-b-2 border-transparent text-slate-400 hover:text-white transition-all whitespace-nowrap">
+        <button id="tab-btn-p3" onclick="switchModalTab('p3')" class="py-3 px-1 border-b-2 border-transparent text-[#756B63] hover:text-[#2F2925] transition-all whitespace-nowrap">
           3. Automated Emailer
         </button>
-        <button id="tab-btn-p4" onclick="switchModalTab('p4')" class="py-3 px-1 border-b-2 border-transparent text-slate-400 hover:text-white transition-all whitespace-nowrap">
+        <button id="tab-btn-p4" onclick="switchModalTab('p4')" class="py-3 px-1 border-b-2 border-transparent text-[#756B63] hover:text-[#2F2925] transition-all whitespace-nowrap">
           4. Website Showcase
         </button>
       </div>
@@ -568,11 +410,11 @@
         <div id="tab-content-p1" class="modal-tab-content space-y-5">
           <div class="grid md:grid-cols-2 gap-6 items-center">
             <!-- Simulated Camera Feed -->
-            <div class="relative bg-black rounded-xl border border-white/20 aspect-video flex flex-col items-center justify-center overflow-hidden group">
-              <div id="camera-overlay" class="absolute inset-0 flex flex-col items-center justify-center bg-slate-950/80 transition-all">
-                <i class="fa-solid fa-video text-3xl text-cyan-400/60 mb-2"></i>
-                <span class="text-xs font-mono text-slate-400">Webcam Stream Standby</span>
-                <span class="text-[11px] text-slate-500 font-mono mt-0.5">Click "Scan & Punch" below</span>
+            <div class="relative bg-[#2F2925] rounded-xl border border-[#DED2C5]/80 aspect-video flex flex-col items-center justify-center overflow-hidden group">
+              <div id="camera-overlay" class="absolute inset-0 flex flex-col items-center justify-center bg-[#FFFDFC]/80 transition-all">
+                <i class="fa-solid fa-video text-3xl text-[#B89B7A]/60 mb-2"></i>
+                <span class="text-xs font-mono text-[#756B63]">Webcam Stream Standby</span>
+                <span class="text-[11px] text-[#756B63] font-mono mt-0.5">Click "Scan & Punch" below</span>
               </div>
 
               <!-- Animated Face Detection Box -->
@@ -580,13 +422,13 @@
                 <div class="text-[10px] font-mono bg-green-500 text-black font-bold px-1 rounded self-start">
                   EMP_ID: #835 (98.4%)
                 </div>
-                <div class="text-[9px] font-mono text-green-300 bg-black/60 px-1 rounded self-end">
+                <div class="text-[9px] font-mono text-green-300 bg-[#2F2925]/60 px-1 rounded self-end">
                   Siddhant P.
                 </div>
               </div>
 
               <!-- Live Watermark -->
-              <div class="absolute bottom-2 left-2 text-[10px] font-mono text-slate-400 bg-black/70 px-2 py-0.5 rounded">
+              <div class="absolute bottom-2 left-2 text-[10px] font-mono text-[#756B63] bg-[#2F2925]/70 px-2 py-0.5 rounded">
                 FPS: 30 • OpenCV 4.9.0 • DMS Linked
               </div>
             </div>
@@ -594,29 +436,29 @@
             <!-- Controls & Database Log -->
             <div class="space-y-4">
               <div>
-                <h4 class="font-bold text-white text-base">Facial Recognition Attendance Engine</h4>
-                <p class="text-xs text-slate-400 mt-1">
+                <h4 class="font-bold text-[#2F2925] text-base">Facial Recognition Attendance Engine</h4>
+                <p class="text-xs text-[#756B63] mt-1">
                   Extracts 128-d face encodings in real-time, matches against MySQL employee repository, and pushes timestamp to DMS while preventing duplicate punches within 12 hours.
                 </p>
               </div>
 
               <div class="flex gap-2">
-                <button id="btn-scan" onclick="simulateAttendance()" class="bg-cyan-500 hover:bg-cyan-400 text-black font-bold px-4 py-2 rounded-lg text-xs font-mono transition-all flex items-center gap-2">
+                <button id="btn-scan" onclick="simulateAttendance()" class="bg-[#8F735B] hover:bg-[#B89B7A] text-black font-bold px-4 py-2 rounded-lg text-xs font-mono transition-all flex items-center gap-2">
                   <i class="fa-solid fa-camera"></i> Scan & Punch Attendance
                 </button>
-                <button onclick="resetAttendanceLog()" class="border border-white/20 hover:bg-white/10 px-3 py-2 rounded-lg text-xs font-mono text-slate-300">
+                <button onclick="resetAttendanceLog()" class="border border-[#DED2C5]/80 hover:bg-[#EDE3D8] px-3 py-2 rounded-lg text-xs font-mono text-[#2F2925]">
                   Reset
                 </button>
               </div>
 
               <!-- Live Event Log -->
-              <div class="bg-slate-950 rounded-lg p-3 border border-white/10 font-mono text-xs">
-                <div class="text-slate-500 text-[11px] mb-1.5 flex justify-between">
+              <div class="bg-[#FFFDFC] rounded-lg p-3 border border-[#DED2C5] font-mono text-xs">
+                <div class="text-[#756B63] text-[11px] mb-1.5 flex justify-between">
                   <span>LIVE RECOGNITION LOG</span>
-                  <span id="log-status" class="text-cyan-400">READY</span>
+                  <span id="log-status" class="text-[#B89B7A]">READY</span>
                 </div>
-                <div id="attendance-log-list" class="space-y-1 text-slate-300 max-h-28 overflow-y-auto">
-                  <div class="text-slate-500 text-[11px]">[System initialized. Awaiting face authentication.]</div>
+                <div id="attendance-log-list" class="space-y-1 text-[#2F2925] max-h-28 overflow-y-auto">
+                  <div class="text-[#756B63] text-[11px]">[System initialized. Awaiting face authentication.]</div>
                 </div>
               </div>
             </div>
@@ -625,25 +467,25 @@
 
         <!-- TAB 2: CSR PIPELINE SIMULATION -->
         <div id="tab-content-p2" class="modal-tab-content hidden space-y-4">
-          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 bg-slate-950/60 p-4 rounded-xl border border-white/10">
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 bg-[#FFFDFC]/95 p-4 rounded-xl border border-[#DED2C5]">
             <div>
-              <h4 class="font-bold text-white text-sm">Automated CSR Discovery & Deduplication Pipeline</h4>
-              <p class="text-xs text-slate-400 mt-0.5">Scrapes corporate registries, enriches company director contacts, and drops duplicates.</p>
+              <h4 class="font-bold text-[#2F2925] text-sm">Automated CSR Discovery & Deduplication Pipeline</h4>
+              <p class="text-xs text-[#756B63] mt-0.5">Scrapes corporate registries, enriches company director contacts, and drops duplicates.</p>
             </div>
-            <button onclick="runPipelineSimulation()" class="bg-cyan-500 hover:bg-cyan-400 text-black font-bold px-4 py-2 rounded-lg text-xs font-mono transition-all flex items-center gap-2 whitespace-nowrap">
+            <button onclick="runPipelineSimulation()" class="bg-[#8F735B] hover:bg-[#B89B7A] text-black font-bold px-4 py-2 rounded-lg text-xs font-mono transition-all flex items-center gap-2 whitespace-nowrap">
               <i class="fa-solid fa-play"></i> Run Scraper Pipeline
             </button>
           </div>
 
           <!-- Simulated Spreadsheet Table -->
-          <div class="bg-slate-950 rounded-xl border border-white/10 overflow-hidden font-mono text-xs">
-            <div class="bg-white/5 px-4 py-2 border-b border-white/10 flex items-center justify-between text-slate-400 text-[11px]">
+          <div class="bg-[#FFFDFC] rounded-xl border border-[#DED2C5] overflow-hidden font-mono text-xs">
+            <div class="bg-[#FFFDFC] px-4 py-2 border-b border-[#DED2C5] flex items-center justify-between text-[#756B63] text-[11px]">
               <span>GOOGLE SHEETS INTEGRATION • CSR_LEADS_2025.gsheet</span>
-              <span id="pipeline-count" class="text-cyan-400">4 Records Validated</span>
+              <span id="pipeline-count" class="text-[#B89B7A]">4 Records Validated</span>
             </div>
             <div class="overflow-x-auto">
               <table class="w-full text-left">
-                <thead class="bg-white/[0.02] text-slate-400 border-b border-white/10 text-[11px]">
+                <thead class="bg-white/[0.02] text-[#756B63] border-b border-[#DED2C5] text-[11px]">
                   <tr>
                     <th class="p-3">Company</th>
                     <th class="p-3">Domain</th>
@@ -652,16 +494,16 @@
                     <th class="p-3">Pipeline Status</th>
                   </tr>
                 </thead>
-                <tbody id="pipeline-rows" class="divide-y divide-white/5 text-slate-300 text-[12px]">
+                <tbody id="pipeline-rows" class="divide-y divide-white/5 text-[#2F2925] text-[12px]">
                   <tr>
-                    <td class="p-3 font-semibold text-white">Tata Consultancy Services</td>
+                    <td class="p-3 font-semibold text-[#2F2925]">Tata Consultancy Services</td>
                     <td class="p-3">Education & STEM</td>
                     <td class="p-3 text-green-400">₹25L - ₹50L</td>
                     <td class="p-3">Head of CSR (Mumbai)</td>
                     <td class="p-3"><span class="bg-green-500/10 text-green-400 border border-green-500/20 px-2 py-0.5 rounded text-[10px]">Verified & Synced</span></td>
                   </tr>
                   <tr>
-                    <td class="p-3 font-semibold text-white">Infosys Foundation</td>
+                    <td class="p-3 font-semibold text-[#2F2925]">Infosys Foundation</td>
                     <td class="p-3">Healthcare / Rural</td>
                     <td class="p-3 text-green-400">₹30L+</td>
                     <td class="p-3">CSR Director</td>
@@ -675,38 +517,38 @@
 
         <!-- TAB 3: AUTOMATED CSR EMAIL SYSTEM -->
         <div id="tab-content-p3" class="modal-tab-content hidden space-y-4">
-          <div class="bg-slate-950 p-5 rounded-xl border border-white/10 space-y-4">
-            <div class="flex justify-between items-center border-b border-white/10 pb-3">
-              <div class="font-mono text-xs text-slate-400">
-                <span class="text-cyan-400 font-bold">DISPATCH ENGINE:</span> Gmail API Batch Runner v2.1
+          <div class="bg-[#FFFDFC] p-5 rounded-xl border border-[#DED2C5] space-y-4">
+            <div class="flex justify-between items-center border-b border-[#DED2C5] pb-3">
+              <div class="font-mono text-xs text-[#756B63]">
+                <span class="text-[#B89B7A] font-bold">DISPATCH ENGINE:</span> Gmail API Batch Runner v2.1
               </div>
-              <span class="text-[11px] font-mono bg-blue-500/20 text-blue-300 px-2.5 py-0.5 rounded">Rate Limit: 100/min</span>
+              <span class="text-[11px] font-mono bg-[#8F735B]/20 text-[#8F735B] px-2.5 py-0.5 rounded">Rate Limit: 100/min</span>
             </div>
 
             <div class="grid md:grid-cols-2 gap-4">
               <!-- Template Preview -->
-              <div class="bg-slate-900/80 p-3.5 rounded-lg border border-white/10 text-xs font-mono space-y-2">
-                <div class="text-slate-400 text-[11px]">MAIL MERGE TEMPLATE:</div>
-                <div class="text-slate-300">Subject: Partnership Proposal for <span class="text-cyan-400">{{Company_Name}}</span></div>
-                <div class="text-slate-400 text-[11px] leading-relaxed border-t border-white/10 pt-2">
+              <div class="bg-[#FFFDFC]/95 p-3.5 rounded-lg border border-[#DED2C5] text-xs font-mono space-y-2">
+                <div class="text-[#756B63] text-[11px]">MAIL MERGE TEMPLATE:</div>
+                <div class="text-[#2F2925]">Subject: Partnership Proposal for <span class="text-[#B89B7A]">{{Company_Name}}</span></div>
+                <div class="text-[#756B63] text-[11px] leading-relaxed border-t border-[#DED2C5] pt-2">
                   Dear <span class="text-yellow-300">{{Lead_Name}}</span>,<br>
                   We noticed your impactful CSR work in <span class="text-purple-300">{{Focus_Area}}</span>. Mahesh Foundation is expanding its outreach in Belgaum...
                 </div>
               </div>
 
               <!-- Live Queue Metrics -->
-              <div class="bg-slate-900/80 p-3.5 rounded-lg border border-white/10 text-xs font-mono space-y-2 flex flex-col justify-between">
+              <div class="bg-[#FFFDFC]/95 p-3.5 rounded-lg border border-[#DED2C5] text-xs font-mono space-y-2 flex flex-col justify-between">
                 <div>
-                  <div class="text-slate-400 text-[11px]">DISPATCH PROGRESS:</div>
-                  <div class="w-full bg-slate-800 rounded-full h-2.5 mt-2">
+                  <div class="text-[#756B63] text-[11px]">DISPATCH PROGRESS:</div>
+                  <div class="w-full bg-[#EDE3D8] rounded-full h-2.5 mt-2">
                     <div id="email-progress-bar" class="bg-cyan-400 h-2.5 rounded-full transition-all duration-500" style="width: 78%"></div>
                   </div>
-                  <div class="flex justify-between text-[11px] text-slate-400 mt-1">
+                  <div class="flex justify-between text-[11px] text-[#756B63] mt-1">
                     <span>Sent: 156 / 200</span>
                     <span class="text-green-400">0 Bounces</span>
                   </div>
                 </div>
-                <button onclick="simulateEmailBlast()" class="bg-cyan-500 hover:bg-cyan-400 text-black font-bold py-2 rounded-lg text-xs font-mono transition-all">
+                <button onclick="simulateEmailBlast()" class="bg-[#8F735B] hover:bg-[#B89B7A] text-black font-bold py-2 rounded-lg text-xs font-mono transition-all">
                   Trigger Test Batch (5 Emails)
                 </button>
               </div>
@@ -716,28 +558,28 @@
 
         <!-- TAB 4: RESPONSIVE NGO WEBSITE SHOWCASE -->
         <div id="tab-content-p4" class="modal-tab-content hidden space-y-4">
-          <div class="bg-slate-950 p-4 rounded-xl border border-white/10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+          <div class="bg-[#FFFDFC] p-4 rounded-xl border border-[#DED2C5] flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <div>
-              <h4 class="font-bold text-white text-base">Mahesh Foundation Web Architecture</h4>
-              <p class="text-xs text-slate-400 mt-0.5">Frontend optimization, donation funnel UX, and interactive section widgets.</p>
+              <h4 class="font-bold text-[#2F2925] text-base">Mahesh Foundation Web Architecture</h4>
+              <p class="text-xs text-[#756B63] mt-0.5">Frontend optimization, donation funnel UX, and interactive section widgets.</p>
             </div>
-            <a href="https://maheshfoundation.org" target="_blank" rel="noopener noreferrer" class="bg-cyan-500 hover:bg-cyan-400 text-black font-bold px-4 py-2 rounded-lg text-xs font-mono transition-all inline-flex items-center gap-2">
+            <a href="https://maheshfoundation.org" target="_blank" rel="noopener noreferrer" class="bg-[#8F735B] hover:bg-[#B89B7A] text-black font-bold px-4 py-2 rounded-lg text-xs font-mono transition-all inline-flex items-center gap-2">
               Launch Live Site <i class="fa-solid fa-arrow-up-right-from-square"></i>
             </a>
           </div>
 
           <div class="grid sm:grid-cols-3 gap-3 text-xs font-mono">
-            <div class="bg-white/5 border border-white/10 p-3.5 rounded-xl">
-              <div class="text-cyan-400 font-bold mb-1">Interactive UI</div>
-              <div class="text-slate-300 text-[11px]">Custom CSS micro-animations & donor CTA triggers.</div>
+            <div class="bg-[#FFFDFC] border border-[#DED2C5] p-3.5 rounded-xl">
+              <div class="text-[#B89B7A] font-bold mb-1">Interactive UI</div>
+              <div class="text-[#2F2925] text-[11px]">Custom CSS micro-animations & donor CTA triggers.</div>
             </div>
-            <div class="bg-white/5 border border-white/10 p-3.5 rounded-xl">
+            <div class="bg-[#FFFDFC] border border-[#DED2C5] p-3.5 rounded-xl">
               <div class="text-green-400 font-bold mb-1">Mobile First</div>
-              <div class="text-slate-300 text-[11px]">100% responsive on smartphones, tablets & desktops.</div>
+              <div class="text-[#2F2925] text-[11px]">100% responsive on smartphones, tablets & desktops.</div>
             </div>
-            <div class="bg-white/5 border border-white/10 p-3.5 rounded-xl">
+            <div class="bg-[#FFFDFC] border border-[#DED2C5] p-3.5 rounded-xl">
               <div class="text-purple-400 font-bold mb-1">Fast Performance</div>
-              <div class="text-slate-300 text-[11px]">Optimized asset loading & clean DOM structure.</div>
+              <div class="text-[#2F2925] text-[11px]">Optimized asset loading & clean DOM structure.</div>
             </div>
           </div>
         </div>
@@ -745,9 +587,9 @@
       </div>
 
       <!-- Modal Footer -->
-      <div class="px-6 py-3 border-t border-white/10 bg-slate-950/70 flex justify-between items-center text-xs font-mono text-slate-400">
+      <div class="px-6 py-3 border-t border-[#DED2C5] bg-[#FFFDFC]/95 flex justify-between items-center text-xs font-mono text-[#756B63]">
         <span>Siddhant Pardeshi Portfolio Engine</span>
-        <button onclick="closeProjectModal()" class="text-white hover:text-cyan-400 underline">
+        <button onclick="closeProjectModal()" class="text-[#2F2925] hover:text-[#B89B7A] underline">
           Close Preview [ESC]
         </button>
       </div>
@@ -756,7 +598,7 @@
   </dialog>
 
   <!-- Notification Toast -->
-  <div id="copy-toast" class="opacity-0 pointer-events-none transition-opacity duration-300 fixed bottom-6 right-6 bg-slate-900 text-white px-4 py-2 rounded-lg text-sm shadow-xl z-50 border border-white/20">
+  <div id="copy-toast" class="opacity-0 pointer-events-none transition-opacity duration-300 fixed bottom-6 right-6 bg-[#FFFDFC] text-[#2F2925] px-4 py-2 rounded-lg text-sm shadow-xl z-50 border border-[#DED2C5]/80">
     Copied to clipboard!
   </div>
 
@@ -836,7 +678,7 @@
       ['p1', 'p2', 'p3', 'p4'].forEach(id => {
         const btn = document.getElementById(`tab-btn-${id}`);
         if (btn) {
-          btn.className = "py-3 px-1 border-b-2 border-transparent text-slate-400 hover:text-white transition-all whitespace-nowrap";
+          btn.className = "py-3 px-1 border-b-2 border-transparent text-[#756B63] hover:text-[#2F2925] transition-all whitespace-nowrap";
         }
       });
 
@@ -846,7 +688,7 @@
 
       const targetBtn = document.getElementById(`tab-btn-${tabId}`);
       if (targetBtn) {
-        targetBtn.className = "py-3 px-1 border-b-2 border-cyan-400 text-cyan-400 font-bold transition-all whitespace-nowrap";
+        targetBtn.className = "py-3 px-1 border-b-2 border-[#B89B7A] text-[#B89B7A] font-bold transition-all whitespace-nowrap";
       }
 
       const titles = {
@@ -881,20 +723,20 @@
         const now = new Date().toLocaleTimeString();
         const newLog = document.createElement('div');
         newLog.className = 'text-green-400 flex items-center justify-between';
-        newLog.innerHTML = `<span>[${now}] Match 98.4% -> Siddhant Pardeshi</span> <span class="text-xs text-cyan-300">PUNCH #${punchCount} SAVED</span>`;
+        newLog.innerHTML = `<span>[${now}] Match 98.4% -> Siddhant Pardeshi</span> <span class="text-xs text-[#8F735B]">PUNCH #${punchCount} SAVED</span>`;
         logList.prepend(newLog);
 
         setTimeout(() => {
           faceBox.classList.add('hidden');
           cameraOverlay.classList.remove('opacity-0');
           logStatus.textContent = 'IDLE';
-          logStatus.className = 'text-cyan-400';
+          logStatus.className = 'text-[#B89B7A]';
         }, 1800);
       }, 900);
     }
 
     function resetAttendanceLog() {
-      document.getElementById('attendance-log-list').innerHTML = '<div class="text-slate-500 text-[11px]">[System initialized. Awaiting face authentication.]</div>';
+      document.getElementById('attendance-log-list').innerHTML = '<div class="text-[#756B63] text-[11px]">[System initialized. Awaiting face authentication.]</div>';
       punchCount = 0;
     }
 
@@ -909,16 +751,16 @@
 
       const randomComp = companies[Math.floor(Math.random() * companies.length)];
       const tr = document.createElement('tr');
-      tr.className = 'animate-pulse bg-cyan-500/10';
+      tr.className = 'animate-pulse bg-[#B89B7A]/10';
       tr.innerHTML = `
-        <td class="p-3 font-semibold text-white">${randomComp.name}</td>
+        <td class="p-3 font-semibold text-[#2F2925]">${randomComp.name}</td>
         <td class="p-3">${randomComp.domain}</td>
         <td class="p-3 text-green-400">${randomComp.budget}</td>
         <td class="p-3">${randomComp.dm}</td>
         <td class="p-3"><span class="bg-green-500/10 text-green-400 border border-green-500/20 px-2 py-0.5 rounded text-[10px]">Scraped & Verified</span></td>
       `;
       rows.prepend(tr);
-      setTimeout(() => tr.classList.remove('animate-pulse', 'bg-cyan-500/10'), 1000);
+      setTimeout(() => tr.classList.remove('animate-pulse', 'bg-[#B89B7A]/10'), 1000);
       count.textContent = `${rows.children.length} Records Validated`;
     }
 
@@ -931,52 +773,6 @@
       }, 1500);
     }
 
-    // -------------------------------------------------------------
-    // Contact Form AJAX Submission with Fallback
-    // -------------------------------------------------------------
-    const contactForm = document.getElementById('contact-form');
-    const formStatus = document.getElementById('form-status');
-    const submitBtn = document.getElementById('submit-btn');
-
-    contactForm.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      
-      const formData = new FormData(contactForm);
-      const name = formData.get('name');
-      const email = formData.get('email');
-      const subject = formData.get('subject') || 'Portfolio Inquiry';
-      const message = formData.get('message');
-
-      formStatus.textContent = 'Sending message...';
-      formStatus.className = 'text-xs font-mono text-cyan-400';
-      submitBtn.disabled = true;
-
-      try {
-        const response = await fetch(contactForm.action, {
-          method: 'POST',
-          body: formData,
-          headers: {
-            'Accept': 'application/json'
-          }
-        });
-
-        if (response.ok) {
-          formStatus.textContent = '✓ Message sent successfully! I will get back to you soon.';
-          formStatus.className = 'text-xs font-mono text-green-400 font-bold';
-          contactForm.reset();
-        } else {
-          throw new Error('Formspree service response not ok');
-        }
-      } catch (err) {
-        // Fallback gracefully to mailto
-        formStatus.textContent = 'Opening your email client...';
-        formStatus.className = 'text-xs font-mono text-yellow-400';
-        const mailtoUrl = `mailto:siddhantpardeshi137@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Hi Siddhant,\n\nName: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
-        window.location.href = mailtoUrl;
-      } finally {
-        submitBtn.disabled = false;
-      }
-    });
   </script>
 </body>
 </html>
