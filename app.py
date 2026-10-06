@@ -1,8 +1,3 @@
-"""
-Siddhant Pardeshi — Software Engineer & AI Automation Specialist
-Interactive Streamlit Web Portfolio
-"""
-
 import streamlit as st
 import pandas as pd
 import numpy as np
